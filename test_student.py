@@ -26,7 +26,7 @@ class StudentTest(unittest.TestCase):
 
     def test_secondary_can_go_to_class(self):
         """status should be "in class" after the go_to_class method for secondary"""
-        inno = SecondaryStudent("Innocent", "S1", "lion")
+        inno = SecondaryStudent("Innocent", "S1", "lion", True)
         inno.go_to_class()
         self.assertTrue(inno.status == "in class")
 
