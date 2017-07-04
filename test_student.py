@@ -34,7 +34,7 @@ class StudentTest(unittest.TestCase):
         """calculate_fees should return 400 for primary"""
         inno = PrimaryStudent("Innocent", "P1" )
         inno_fees = inno.calculate_fees()
-        self.assertEqual(inno-fess, 400)
+        self.assertEqual(inno_fees, 400)
 
     def test_calculate_fees_secondary_no_bus(self):
         """calculate_fees should return 400 with no bus fare """
@@ -44,7 +44,7 @@ class StudentTest(unittest.TestCase):
 
     def test_calculate_fees_secondary_bus(self):
         """calculate_fees should return 500 if student uses bus"""
-        inno = SecondaryStudent("Innocent", "S1", "lion")
+        inno = SecondaryStudent("Innocent", "S1", "lion", True)
         inno_fees = inno.calculate_fees()
         self.assertEqual(inno_fees, 500)
 

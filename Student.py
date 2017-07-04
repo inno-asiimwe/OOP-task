@@ -62,10 +62,13 @@ class SecondaryStudent(Student):
             return Student.fee + 100
         else:
             return Student.fee
+
     def go_to_detention(self):
-        pass
+        """Method sets detention atttribute to True for seconary students"""
+        self.detention = True
     
     def leave_detention(self):
-        pass
+        """"Method sets detention attribute to False as student leaves detention"""
+        self.detention = False
 
     
