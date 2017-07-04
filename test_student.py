@@ -1,6 +1,8 @@
 import unittest
 from Student import Student, PrimaryStudent, SecondaryStudent
 
+
+
 class StudentTest(unittest.TestCase):
 
     def setUp(self):
@@ -85,11 +87,4 @@ class StudentTest(unittest.TestCase):
         inno.leave_detention()
         state2 = inno.detention
         self.assertEqual([state1, state2], [ True, False])
-
-
-
-    
-
         
-        
-
