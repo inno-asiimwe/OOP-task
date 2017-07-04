@@ -56,9 +56,9 @@ class StudentTest(unittest.TestCase):
     def test_pay_fees_success(self):
         """should change fees due attribute"""
         inno = PrimaryStudent("Innocent", "P1" )
-        due_1 = inno._Student.__fees_due
+        due_1 = inno.__fees_due
         inno.pay_fees(300)
-        due_2 = inno._Student.__fees_due
+        due_2 = inno.__fees_due
         self.assertEqual([due_1, due_2], [400, 100])
 
     def test_go_home_success(self):
