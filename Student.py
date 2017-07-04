@@ -25,6 +25,15 @@ class Student:
 
 class PrimaryStudent(Student):
     pass
+        
 
 class SecondaryStudent(Student):
-    pass
+    """Implementing the SecondaryStudent class to cater for the secondary students"""
+    def __init__(self, name, grade, bus = False):
+        Student.__init__(self, name, grade)
+        self.__fees_due = self.claculate(bus)
+
+    def calculate_fees(bus):
+        pass
+
+    
