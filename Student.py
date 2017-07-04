@@ -37,6 +37,7 @@ class Student:
     def go_home(self):
         """Method changes location attribute to home"""
         self.location = 'home'
+        
     def __expelled(self):
         """Method called when student is expelled from school"""
         return "You have been expelled"
