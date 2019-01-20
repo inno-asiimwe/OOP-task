@@ -1,78 +1,76 @@
 class Student:
     """Implementation of the student class """
 
-    fee = 400
+    fees = 400
 
-    def __init__(self, name, grade):
-        self.name = name
-        self.grade = grade
-        self.status = "out of class"
-        self.location = "home"
-        self._fees_due = 0
+    def __init__(self, firstname, lastname, grade):
+        self.set_firstname(firstname)
+        self.set_lastname(lastname)
+        self.set_grade(grade)
+
+    def set_firstname(self, name):
+        self.__firstname = name
+
+    def set_lastname(self, name):
+        self.__lastname = name
+
+    def set_grade(self, grade):
+        self.__grade = grade
+
+    def get_firstname(self):
+        return self.__firstname
+
+    def get_lastname(self):
+        return self.__lastname
+
+    def get_grade(self):
+        return self.__grade
 
     def calculate_fees(self):
-       raise NotImplementedError("implemented by child classes")
-    
-    def report_to_school(self):
-        self.location = "school"
-    
-    def go_to_class(self):
-        """method changes status of student to in class """
-        self.status = "in class"
-    
-    def leave_class(self):
-        """Method changes status to out of class"""
-        self.status = "out of class"
-    
-    def pay_fees(self,amount):
-        """Method modifies the _fees_due attribute of the student object, returning a balance where applicable"""
-        if self._fees_due == 0:
-            return "no need for payment"
-        elif amount > self._fees_due:
-            self._fees_due = 0
-            return amount - self._fees_due
-        else:
-            self._fees_due -= amount
-        
-    def go_home(self):
-        """Method changes location attribute to home"""
-        self.location = 'home'
-        
-    def __expelled(self):
-        """Method called when student is expelled from school"""
-        return "You have been expelled"
+        raise NotImplementedError("implemented by child classes")
+
+    def __str__(self):
+        return self.get_firstname() + " " + self.get_lastname()
+
 
 class PrimaryStudent(Student):
-    """Implementing the PrimaryStudent class to cater for the primary stuents"""
-    def __init__(self, name, grade):
-        Student.__init__(self, name, grade)
-        self._fees_due = self.calculate_fees()
+    """
+    Implementing the PrimaryStudent class
+    to cater for the primary stuents
+    """
+
+    def __init__(self, firstname, lastname, grade):
+        Student.__init__(self, firstname, lastname, grade)
+        self.fees_due = self.calculate_fees()
 
     def calculate_fees(self):
-        return Student.fee 
+        return Student.fees
+
 
 class SecondaryStudent(Student):
-    """Implementing the SecondaryStudent class to cater for the secondary students"""
-    def __init__(self, name, grade, house, bus = False):
-        Student.__init__(self, name, grade)
+    """
+    Implementing the SecondaryStudent class
+    to cater for the secondary students
+    """
+    def __init__(self, firstname, lastname, grade, house, bus=False):
+        Student.__init__(self, firstname, lastname, grade)
         self.house = house
         self.bus = bus
         self.detention = False
-        self._fees_due = self.calculate_fees()
+        self.fees_due = self.calculate_fees()
 
     def calculate_fees(self):
         """Method calculates fees supposed to be paid by secondary student"""
         if self.bus:
-            return Student.fee + 100
-        else:
-            return Student.fee
+            return Student.fees + 100
+        return Student.fees
 
     def go_to_detention(self):
         """Method sets detention atttribute to True for seconary students"""
         self.detention = True
-    
-    def leave_detention(self):
-        """"Method sets detention attribute to False as student leaves detention"""
-        self.detention = False
 
-    
+    def leave_detention(self):
+        """ Method sets detention attribute to False
+        as student leaves detention
+        """
+        self.detention = False
